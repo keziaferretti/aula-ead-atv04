@@ -1,5 +1,6 @@
 const express = require('express');
-const mysql = require('mysql2')
+const mysql = require('mysql2');
+const os = require('os'); 
 
 const app = express();
 const port = 3030;
@@ -17,6 +18,29 @@ db.connect((err) => {
     } else {
         console.log('Conexão com o banco de dados estabelecida.');
     }
+});
+
+app.get('/liveness', (req, res) => {
+    const response = {
+        message: "Atividade 4",
+        path: process.cwd(),
+    };
+    if (typeof process.getgid === 'function') {
+        response.gid = process.getgid();
+    }
+    if (typeof process.getuid === 'function') {
+        response.uid = process.getuid();
+    }
+    return res.status(200).json(response);
+});
+
+app.get('/readiness', (req, res) => {
+    return res.status(200).json({
+        message: "Atividade 4 Docker",
+        platform: os.platform(),
+        freemem: os.freemem(),
+        homedir: os.homedir(),
+    });
 });
 
 app.get('/consulta-dados', (req, res) => {
