@@ -44,4 +44,10 @@ SELECT * FROM users;
 Links
 
 GitHub: https://github.com/keziaferretti/aula-ead-atv04.git
-Docker Hub: 
+Docker Hub: https://hub.docker.com/r/keziaferretti/node-mysql-app
+
+https://hub.docker.com/repository/docker/keziaferretti/node-mysql-app/general
+
+docker push keziaferretti/node-mysql-app:tagname
+Comando Pull do Docker
+docker pull keziaferretti/node-mysql-app
